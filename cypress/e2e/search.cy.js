@@ -57,11 +57,10 @@ describe('Search', () => {
                         }
                     });
 
-                cy.wait(3000)
-                cy.get(objectIDs.WALLPAPER_DOWNLOAD_BTTN)
+
+                cy.get(objectIDs.WALLPAPER_DOWNLOAD_BTTN,{timeout:3000})
                     .click();
-                cy.get(objectIDs.WALLPAPER_CNTDWN).should('exist');
-                cy.wait(15000);
+                cy.get(objectIDs.WALLPAPER_CNTDWN),{timeout:15000}.should('exist');
                 cy.get(objectIDs.WALLPAPER_CNTDWN).should('not.exist');
                 // Verify that the file exists
                 cy.readFile(`${downloadsFolder}/flowers.jpg`).should('exist');
